@@ -7,7 +7,7 @@
   let promise = getMovies();
 
   async function getMovies(m) {
-    return fetch("http://www.omdbapi.com/?apikey=807a3da6&s=" + m)
+    return fetch("https://www.omdbapi.com/?apikey=807a3da6&s=" + m)
       .then((Response) => {
         if (!Response.ok) {
           throw new Error(Response.statusText);
@@ -25,16 +25,14 @@
 
   async function getDetail(data) {
     return fetch(
-      "http://www.omdbapi.com/?apikey=807a3da6&i=" + data
+      "https://www.omdbapi.com/?apikey=807a3da6&i=" + data
     ).then((Response) => Response.json());
   }
 
   let promise2 = getDetail(id);
 
   $: if (keyword.length > 2) {
-    console.log(keyword);
     promise = getMovies(keyword);
-    console.log(promise);
   }
 </script>
 
